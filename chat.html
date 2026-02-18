@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeryChat - Chat Mockup</title>
+    <link rel="stylesheet" href="styles/variables.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-main: 'Outfit', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--black-100);
+            color: var(--white);
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 300px;
+            background-color: var(--black-90);
+            border-right: 1px solid var(--black-80);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header {
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sidebar-header h2 {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 700;
+            background: var(--gra-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .chat-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .chat-item {
+            padding: 1rem;
+            border-radius: 1rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .chat-item:hover {
+            background-color: var(--black-80);
+        }
+
+        .chat-item.active {
+            background-color: var(--black-80);
+            border: 1px solid var(--color-violet-mid);
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--gra-2);
+        }
+
+        .chat-info h4 {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .chat-info p {
+            margin: 0;
+            font-size: 0.75rem;
+            color: var(--black-40);
+        }
+
+        /* Main Chat Area */
+        .main-chat {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-gra);
+        }
+
+        .chat-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--black-80);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            backdrop-filter: blur(10px);
+            background: rgba(18, 20, 23, 0.8);
+        }
+
+        .messages {
+            flex: 1;
+            padding: 2rem;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .message {
+            max-width: 70%;
+            padding: 1rem 1.5rem;
+            border-radius: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .message.received {
+            background: var(--black-90);
+            align-self: flex-start;
+            border-bottom-left-radius: 0.25rem;
+        }
+
+        .message.sent {
+            background: var(--gra-main);
+            align-self: flex-end;
+            border-bottom-right-radius: 0.25rem;
+            box-shadow: 0 4px 15px rgba(255, 107, 114, 0.3);
+        }
+
+        .chat-input-area {
+            padding: 2rem;
+            background: rgba(18, 20, 23, 0.9);
+        }
+
+        .input-container {
+            background: var(--black-80);
+            border-radius: 1.25rem;
+            padding: 0.5rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-container:focus-within {
+            border-color: var(--color-violet-mid);
+        }
+
+        input {
+            background: transparent;
+            border: none;
+            color: var(--white);
+            flex: 1;
+            padding: 0.75rem 0;
+            outline: none;
+            font-size: 0.95rem;
+        }
+
+        .send-btn {
+            background: var(--gra-main);
+            color: white;
+            border: none;
+            padding: 0.5rem 1.25rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+
+        .send-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Status indicators */
+        .status {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        .status-online {
+            background: var(--color-success);
+        }
+
+        .status-away {
+            background: var(--color-warning);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>VeryChat</h2>
+        </div>
+        <div class="chat-list">
+            <div class="chat-item active">
+                <div class="avatar" style="background: var(--gra-main);"></div>
+                <div class="chat-info">
+                    <h4>Design Team</h4>
+                    <p>컬러 가이드 확인 부탁드려요!</p>
+                </div>
+            </div>
+            <div class="chat-item">
+                <div class="avatar" style="background: var(--color-violet);"></div>
+                <div class="chat-info">
+                    <h4>Somang Kim</h4>
+                    <p>안녕하세요!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-chat">
+        <div class="chat-header">
+            <div class="avatar" style="background: var(--gra-main);"></div>
+            <div>
+                <h3 style="margin: 0; font-size: 1.1rem;">Design Team</h3>
+                <span style="font-size: 0.75rem; color: var(--color-success);"><span
+                        class="status status-online"></span>Online</span>
+            </div>
+        </div>
+
+        <div class="messages">
+            <div class="message received">
+                새로운 컬러 가이드가 도착했습니다. MD 파일로 정리해두었으니 확인해주세요.
+            </div>
+            <div class="message sent">
+                네, 확인했습니다! Coral과 Violet 조합이 아주 세련되었네요.
+            </div>
+            <div class="message received">
+                맞습니다. 특히 그라데이션이 핵심입니다. 모든 디자인 결과물에 순차적으로 적용할 예정입니다.
+            </div>
+            <div class="message sent">
+                지금 CSS 변수로 모두 등록 완료했습니다. 바로 적용해서 보여드릴게요.
+            </div>
+        </div>
+
+        <div class="chat-input-area">
+            <div class="input-container">
+                <input type="text" placeholder="메시지를 입력하세요...">
+                <button class="send-btn">전송</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

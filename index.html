@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeryChat Design System - Colors</title>
+    <link rel="stylesheet" href="styles/variables.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --font-main: 'Outfit', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-main);
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            color: var(--white);
+        }
+
+        header {
+            margin-bottom: 4rem;
+            border-bottom: 1px solid var(--black-80);
+            padding-bottom: 2rem;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            background: var(--gra-main);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        header p {
+            color: var(--black-40);
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--black-20);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 2rem;
+        }
+
+        .color-card {
+            background: var(--black-90);
+            border-radius: 1.5rem;
+            padding: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            border: 1px solid var(--black-80);
+        }
+
+        .color-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-color: var(--color-violet-mid);
+        }
+
+        .swatch {
+            height: 120px;
+            width: 100%;
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .color-info {
+            padding: 0.5rem;
+        }
+
+        .color-name {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+
+        .color-hex {
+            font-family: monospace;
+            color: var(--black-40);
+            font-size: 0.85rem;
+        }
+
+        /* Gradient Showcase */
+        .gradient-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gradient-card {
+            height: 200px;
+            border-radius: 2rem;
+            display: flex;
+            align-items: flex-end;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--black-80);
+        }
+
+        .gradient-card span {
+            position: relative;
+            z-index: 2;
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate {
+            animation: fadeIn 0.8s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <header class="animate">
+        <h1>Colors</h1>
+        <p>포인트 컬러는 20% 이하 포인트에만 활용합니다. 화이트 앤 네이비 블랙이 클린한 톤앤매너를 유지합니다.</p>
+    </header>
+
+    <section class="animate" style="animation-delay: 0.2s;">
+        <h2>Main Palette</h2>
+        <div class="grid">
+            <div class="color-card">
+                <div class="swatch" style="background: var(--color-coral);"></div>
+                <div class="color-info">
+                    <span class="color-name">Coral</span>
+                    <span class="color-hex">#FF6B72</span>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="swatch" style="background: var(--color-violet-light);"></div>
+                <div class="color-info">
+                    <span class="color-name">Violet Light</span>
+                    <span class="color-hex">#D1C4FF</span>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="swatch" style="background: var(--color-violet-mid);"></div>
+                <div class="color-info">
+                    <span class="color-name">Violet Mid</span>
+                    <span class="color-hex">#9580FF</span>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="swatch" style="background: var(--color-violet);"></div>
+                <div class="color-info">
+                    <span class="color-name">Violet</span>
+                    <span class="color-hex">#7C5CFF</span>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="swatch" style="background: var(--color-red);"></div>
+                <div class="color-info">
+                    <span class="color-name">Red</span>
+                    <span class="color-hex">#FF4D4D</span>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="swatch" style="background: var(--color-warning);"></div>
+                <div class="color-info">
+                    <span class="color-name">Yellow</span>
+                    <span class="color-hex">#FFD93D</span>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="swatch" style="background: var(--color-success);"></div>
+                <div class="color-info">
+                    <span class="color-name">Green</span>
+                    <span class="color-hex">#4ADE80</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="animate" style="animation-delay: 0.4s;">
+        <h2>Gradients</h2>
+        <div class="gradient-grid">
+            <div class="gradient-card" style="background: var(--gra-main);"><span>Gra Main</span></div>
+            <div class="gradient-card" style="background: var(--gra-2);"><span>Gra 2</span></div>
+            <div class="gradient-card" style="background: var(--bg-gra);"><span>BG Gra</span></div>
+            <div class="gradient-card" style="background: var(--bg-gra-2);"><span>BG Gra 2</span></div>
+        </div>
+    </section>
+
+    <section class="animate" style="animation-delay: 0.6s;">
+        <h2>Greyscale (Dark)</h2>
+        <div class="grid">
+            <div class="color-card">
+                <div class="swatch" style="background: var(--black-100);"></div>
+                <div class="color-info">
+                    <span class="color-name">Black 100</span>
+                    <span class="color-hex">#121417</span>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="swatch" style="background: var(--black-90);"></div>
+                <div class="color-info">
+                    <span class="color-name">Black 90</span>
+                    <span class="color-hex">#1A1C20</span>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="swatch" style="background: var(--black-80);"></div>
+                <div class="color-info">
+                    <span class="color-name">Black 80</span>
+                    <span class="color-hex">#2C2E33</span>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="swatch" style="background: var(--black-70);"></div>
+                <div class="color-info">
+                    <span class="color-name">Black 70</span>
+                    <span class="color-hex">#3E4147</span>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="swatch" style="background: var(--black-60);"></div>
+                <div class="color-info">
+                    <span class="color-name">Black 60</span>
+                    <span class="color-hex">#5C5F66</span>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="swatch" style="background: var(--white);"></div>
+                <div class="color-info">
+                    <span class="color-name">White</span>
+                    <span class="color-hex">#FFFFFF</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
